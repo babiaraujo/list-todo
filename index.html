@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        #tarefaInput, button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        button {
+            background: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="tarefaInput" placeholder="Adicione uma nova tarefa">
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    <ul id="listaTarefas"></ul>
+
+    <script>
+        function adicionarTarefa() {
+        const input = document.getElementById('tarefaInput'); // 1
+        const tarefaTexto = input.value.trim(); // 2
+        if (tarefaTexto === '') { // 3
+            alert('Por favor, insira uma tarefa!'); // 4
+            return; // 5
+        }
+        
+        const lista = document.getElementById('listaTarefas'); // 6
+        const tarefa = document.createElement('li'); // 7
+        
+        const checkbox = document.createElement('input'); // 8
+        checkbox.type = 'checkbox'; // 9
+        checkbox.className = 'checkbox'; // 10
+        checkbox.onclick = function(e) { // 11
+            e.stopPropagation(); // 12
+            tarefa.style.textDecoration = checkbox.checked ? 'line-through' : 'none'; // 13
+        };
+        
+        const texto = document.createElement('span'); // 14
+        texto.textContent = tarefaTexto; // 15
+        texto.style.marginLeft = '10px'; // 16
+        
+        const removerBtn = document.createElement('button'); // 17
+        removerBtn.textContent = 'Remover'; // 18
+        removerBtn.onclick = function() { // 19
+            lista.removeChild(tarefa); // 20
+        };
+        
+        tarefa.appendChild(checkbox); // 21
+        tarefa.appendChild(texto); // 22
+        tarefa.appendChild(removerBtn); // 23
+        lista.appendChild(tarefa); // 24
+        input.value = ''; // 25
+        }
+        
+        </script>
+
+
+</body>
+</html>
