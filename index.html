@@ -51,39 +51,39 @@
 
     <script>
         function adicionarTarefa() {
-        const input = document.getElementById('tarefaInput'); // 1
-        const tarefaTexto = input.value.trim(); // 2
-        if (tarefaTexto === '') { // 3
-            alert('Por favor, insira uma tarefa!'); // 4
+        const input = document.getElementById('tarefaInput'); 
+        const tarefaTexto = input.value.trim(); 
+        if (tarefaTexto === '') { 
+            alert('Por favor, insira uma tarefa!'); 
             return; // 5
         }
         
-        const lista = document.getElementById('listaTarefas'); // 6
-        const tarefa = document.createElement('li'); // 7
+        const lista = document.getElementById('listaTarefas'); 
+        const tarefa = document.createElement('li'); 
         
-        const checkbox = document.createElement('input'); // 8
-        checkbox.type = 'checkbox'; // 9
-        checkbox.className = 'checkbox'; // 10
-        checkbox.onclick = function(e) { // 11
-            e.stopPropagation(); // 12
-            tarefa.style.textDecoration = checkbox.checked ? 'line-through' : 'none'; // 13
+        const checkbox = document.createElement('input'); 
+        checkbox.type = 'checkbox'; 
+        checkbox.className = 'checkbox'; 
+        checkbox.onclick = function(e) { 
+            e.stopPropagation(); 
+            tarefa.style.textDecoration = checkbox.checked ? 'line-through' : 'none'; 
         };
         
-        const texto = document.createElement('span'); // 14
-        texto.textContent = tarefaTexto; // 15
-        texto.style.marginLeft = '10px'; // 16
+        const texto = document.createElement('span'); 
+        texto.textContent = tarefaTexto; 
+        texto.style.marginLeft = '10px'; 
         
-        const removerBtn = document.createElement('button'); // 17
-        removerBtn.textContent = 'Remover'; // 18
-        removerBtn.onclick = function() { // 19
-            lista.removeChild(tarefa); // 20
+        const removerBtn = document.createElement('button'); 
+        removerBtn.textContent = 'Remover'; 
+        removerBtn.onclick = function() { 
+            lista.removeChild(tarefa); 
         };
         
-        tarefa.appendChild(checkbox); // 21
-        tarefa.appendChild(texto); // 22
-        tarefa.appendChild(removerBtn); // 23
-        lista.appendChild(tarefa); // 24
-        input.value = ''; // 25
+        tarefa.appendChild(checkbox); 
+        tarefa.appendChild(texto); 
+        tarefa.appendChild(removerBtn); 
+        lista.appendChild(tarefa); 
+        input.value = ''; 
         }
         
         </script>
